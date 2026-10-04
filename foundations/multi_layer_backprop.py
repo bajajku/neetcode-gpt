@@ -44,7 +44,7 @@ class Solution:
         dy_hat_dw2 = act
         dy_hat_db2 = 1
 
-        dl_dw2 =np.outer(dl_dy_hat, dy_hat_dw2)
+        dl_dw2 = np.outer(dl_dy_hat, dy_hat_dw2)
         dl_db2 = dl_dy_hat * dy_hat_db2
 
         # dl_dw1 = dl/dy_hat * dy_hat/dact * dact/dl1 * dl1/dw1
