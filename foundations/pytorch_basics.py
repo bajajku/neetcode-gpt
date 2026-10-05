@@ -9,7 +9,7 @@ class Solution:
         # Use torch.reshape(tensor, new_shape)
         m, n = to_reshape.shape
         m, n = (m*n) // 2, 2
-        x = torch.reshape(to_reshape, (m, n))
+        x = to_reshape.reshape(m, n)
         return x
 
     def average(self, to_avg: TensorType[float]) -> TensorType[float]:
