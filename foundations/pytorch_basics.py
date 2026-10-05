@@ -1,0 +1,29 @@
+import torch
+import torch.nn
+from torchtyping import TensorType
+
+# Round all answers to 4 decimal places: torch.round(tensor, decimals=4)
+class Solution:
+    def reshape(self, to_reshape: TensorType[float]) -> TensorType[float]:
+        # Reshape (M, N) tensor to (M*N/2, 2)
+        # Use torch.reshape(tensor, new_shape)
+        m, n = to_reshape.shape
+        m, n = (m*n) // 2, 2
+        x = torch.reshape(to_reshape, (m, n))
+        return x
+
+    def average(self, to_avg: TensorType[float]) -> TensorType[float]:
+        # Compute column-wise mean (average across rows)
+        # Use torch.mean(tensor, dim=0)
+        x = to_avg.mean(dim = 0)
+        return x
+
+    def concatenate(self, a: TensorType[float], b: TensorType[float]) -> TensorType[float]:
+        # Join two tensors side-by-side along dim=1
+        # Use torch.cat((a, b), dim=1)
+        return torch.cat((a, b), dim=1)
+
+    def get_loss(self, prediction: TensorType[float], target: TensorType[float]) -> TensorType[float]:
+        # Compute Mean Squared Error between prediction and target
+        # Use torch.nn.functional.mse_loss(prediction, target)
+        return torch.nn.functional.mse_loss(prediction, target)
